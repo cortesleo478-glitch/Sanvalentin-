@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Atrevido 😏🔥</title>
+
+  <style>
+    :root{
+      --bg:#07000a;
+      --hot:#ff2b6a;
+      --pink:#ff4da6;
+      --gold:#ffd36a;
+      --white:#fff;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,77,166,.25), transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(255,211,106,.15), transparent 45%),
+        linear-gradient(180deg, #0b0010, var(--bg));
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--white);
+      overflow:hidden;
+    }
+
+    .card{
+      width:min(520px, 96vw);
+      border-radius:26px;
+      padding:22px 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+      backdrop-filter: blur(12px);
+      text-align:center;
+      animation: pop .7s ease forwards;
+    }
+    @keyframes pop{
+      from{transform:scale(.96); opacity:0}
+      to{transform:scale(1); opacity:1}
+    }
+
+    h1{
+      margin:0 0 10px 0;
+      font-size:32px;
+      background: linear-gradient(90deg, #ff4da6, #ffd36a, #ff2b6a);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    p{
+      margin:0 auto 14px auto;
+      max-width:460px;
+      line-height:1.55;
+      color:rgba(255,255,255,.92);
+    }
+
+    .btn{
+      margin-top:12px;
+      display:inline-block;
+      border:none;
+      cursor:pointer;
+      border-radius:999px;
+      padding:12px 16px;
+      font-weight:900;
+      font-size:14px;
+      color:white;
+      background: linear-gradient(90deg, #ff4da6, #ff2b6a);
+      box-shadow: 0 10px 30px rgba(255,43,106,.22);
+    }
+
+    .secret{
+      display:none;
+      margin-top:16px;
+      padding:14px 14px;
+      border-radius:18px;
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,77,166,.25);
+      animation: fade .35s ease forwards;
+    }
+    @keyframes fade{
+      from{opacity:0; transform:translateY(6px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+
+    .float{
+      position:absolute;
+      font-size:18px;
+      opacity:.8;
+      animation: up linear infinite;
+      pointer-events:none;
+      text-shadow: 0 0 12px rgba(255,77,166,.55);
+    }
+    @keyframes up{
+      0%{transform:translateY(120vh) rotate(0deg); opacity:0}
+      10%{opacity:1}
+      100%{transform:translateY(-30vh) rotate(360deg); opacity:0}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div style="font-weight:800; opacity:.9;">😏 14 de febrero • Modo atrevido</div>
+    <h1>Me provocas…</h1>
+
+    <p>
+      No sé cómo decirlo bonito…  
+      pero cuando pienso en ti, me dan ganas de
+      <b>acercarme</b>, mirarte fijo…  
+      y robarte un beso lento 🔥💋
+    </p>
+
+    <p>
+      Te amo… y también me encantas de esa forma que
+      <b>no se puede esconder</b> 😌💘
+    </p>
+
+    <button class="btn" onclick="reveal()">🔥 Ver el mensaje final</button>
+
+    <div class="secret" id="s">
+      <b>Si hoy estuvieras aquí…</b><br><br>
+      te abrazaría por la cintura…  
+      te diría al oído “ven”…  
+      y te haría sentir lo mucho que te deseo 😏🔥❤️
+    </div>
+
+    <div style="margin-top:14px; font-size:12px; opacity:.7;">
+      Hecho con amor… y con ganas 😌🔥
+    </div>
+  </div>
+
+  <script>
+    const icons = ["💘","❤️","🔥","💋","✨","🌹"];
+
+    function spawn(){
+      const el = document.createElement("div");
+      el.className="float";
+      el.innerText = icons[Math.floor(Math.random()*icons.length)];
+      el.style.left = Math.random()*100 + "vw";
+      el.style.fontSize = (14 + Math.random()*22) + "px";
+      el.style.animationDuration = (4 + Math.random()*6) + "s";
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(), 9000);
+    }
+
+    for(let i=0;i<22;i++) setTimeout(spawn, i*120);
+    setInterval(spawn, 260);
+
+    function reveal(){
+      document.getElementById("s").style.display="block";
+      for(let i=0;i<16;i++) setTimeout(spawn, i*70);
+      if(navigator.vibrate) navigator.vibrate([70,40,70]);
+    }
+  </script>
+</body>
+  </html>
